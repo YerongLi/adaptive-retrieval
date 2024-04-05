@@ -210,7 +210,7 @@ def main():
 
     # main loop
     for i, row in tqdm(enumerate(sample.iloc), total=n):
-        if i % 40: continue
+        if i % 80: continue
         # get few shot examples text
         if n_examples == 0:
             few_shot_examples_text = ""
