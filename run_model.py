@@ -34,8 +34,7 @@ import jsonlines
 
 def load_jsonlines(file):
     with jsonlines.open(file, 'r') as jsonl_f:
-        # lst = [obj for obj in jsonl_f]
-        lst = [obj for i, obj in enumerate(jsonl_f) if i % 20]
+        lst = [obj for obj in jsonl_f]
     return lst
 
 q_templates = {
@@ -210,8 +209,8 @@ def main():
         gen_passages = []
 
     # main loop
-    for row in tqdm(sample.iloc, total=n):
-
+    for i, row in tqdm(enumerate(sample.iloc), total=n):
+        if i % 20: continue
         # get few shot examples text
         if n_examples == 0:
             few_shot_examples_text = ""
