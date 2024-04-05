@@ -34,8 +34,8 @@ import jsonlines
 
 def load_jsonlines(file):
     with jsonlines.open(file, 'r') as jsonl_f:
-        lst = [obj for obj in jsonl_f]
-        lst = lst[:-20:]
+        # lst = [obj for obj in jsonl_f]
+        lst = [obj for i, obj in enumerate(jsonl_f) if i % 20]
     return lst
 
 q_templates = {
